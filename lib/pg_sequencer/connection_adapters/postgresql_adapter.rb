@@ -6,6 +6,14 @@ module PgSequencer
         execute create_sequence_sql(name, options)
       end
       
+      def drop_sequence(name)
+        execute drop_sequence_sql(name)
+      end
+      
+      def change_sequence(name, options = {})
+        execute alter_sequence_sql(name, options)
+      end
+      
       # CREATE [ TEMPORARY | TEMP ] SEQUENCE name [ INCREMENT [ BY ] increment ]
       #     [ MINVALUE minvalue | NO MINVALUE ] [ MAXVALUE maxvalue | NO MAXVALUE ]
       #     [ START [ WITH ] start ] [ CACHE cache ] [ [ NO ] CYCLE ]
@@ -22,7 +30,7 @@ module PgSequencer
         "CREATE SEQUENCE #{name}#{sequence_options_sql(options)}"
       end
       
-      def remove_sequence_sql(name)
+      def drop_sequence_sql(name)
         "DROP SEQUENCE #{name}"
       end
       

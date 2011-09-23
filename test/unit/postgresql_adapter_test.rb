@@ -130,8 +130,8 @@ class PostgreSQLAdapterTest < ActiveSupport::TestCase
   
   context "dropping sequences" do
     should "generate the proper SQL" do
-      assert_equal("DROP SEQUENCE seq_users", remove_sequence_sql('seq_users'))
-      assert_equal("DROP SEQUENCE seq_items", remove_sequence_sql('seq_items'))
+      assert_equal("DROP SEQUENCE seq_users", drop_sequence_sql('seq_users'))
+      assert_equal("DROP SEQUENCE seq_items", drop_sequence_sql('seq_items'))
     end
   end # dropping sequences
   
