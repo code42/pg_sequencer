@@ -116,4 +116,21 @@ class PostgreSQLAdapterTest < ActiveSupport::TestCase
     end
   end
   
+  context "altering sequences" do
+    
+    context "without options" do
+      should "return a blank SQL statement" do
+        assert_equal("", alter_sequence_sql('things', {}))
+        assert_equal("", alter_sequence_sql('things'))
+      end
+    end
+    
+
+    should "description" do
+      
+    end
+  end
+  
+  
+  
 end

@@ -18,7 +18,16 @@ module PgSequencer
       #   :cache     => 5,
       #   :cycle     => true
       def create_sequence_sql(name, options = {})
-        sql = "CREATE SEQUENCE #{name}"
+        "CREATE SEQUENCE #{name}#{sequence_options_sql(options)}"
+      end
+      
+      def alter_sequence_sql(name, options = {})
+        return "" if options.blank?
+        "ALTER SEQUENCE #{name}#{sequence_options_sql(options)}"
+      end
+      
+      def sequence_options_sql(options = {})
+        sql = ""
         sql << " INCREMENT BY #{options[:increment]}" if options[:increment]
         
         sql << case options[:min]
