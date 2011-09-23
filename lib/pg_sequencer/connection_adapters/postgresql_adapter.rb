@@ -10,7 +10,7 @@ module PgSequencer
       # CREATE [ TEMPORARY | TEMP ] SEQUENCE name [ INCREMENT [ BY ] increment ]
       #     [ MINVALUE minvalue | NO MINVALUE ] [ MAXVALUE maxvalue | NO MAXVALUE ]
       #     [ START [ WITH ] start ] [ CACHE cache ] [ [ NO ] CYCLE ]
-      def add_sequence_sql(name, options = {})
+      def create_sequence_sql(name, options = {})
         sql = "CREATE SEQUENCE #{name}"
         sql
       end
