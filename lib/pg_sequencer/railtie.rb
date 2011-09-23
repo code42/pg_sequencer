@@ -21,4 +21,5 @@ module PgSequencer
   #     # PgSequencer::Adapter.load!
   #   end
   # end
+  end
 end
