@@ -11,7 +11,7 @@ module PgSequencer
       end
       
       def change_sequence(name, options = {})
-        execute alter_sequence_sql(name, options)
+        execute change_sequence_sql(name, options)
       end
       
       # CREATE [ TEMPORARY | TEMP ] SEQUENCE name [ INCREMENT [ BY ] increment ]
@@ -34,7 +34,7 @@ module PgSequencer
         "DROP SEQUENCE #{name}"
       end
       
-      def alter_sequence_sql(name, options = {})
+      def change_sequence_sql(name, options = {})
         return "" if options.blank?
         options.delete(:start)
         "ALTER SEQUENCE #{name}#{sequence_options_sql(options)}"

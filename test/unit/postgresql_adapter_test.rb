@@ -113,16 +113,16 @@ class PostgreSQLAdapterTest < ActiveSupport::TestCase
   context "altering sequences" do
     context "without options" do
       should "return a blank SQL statement" do
-        assert_equal("", alter_sequence_sql('things'))
-        assert_equal("", alter_sequence_sql('things', {}))
-        assert_equal("", alter_sequence_sql('things', nil))
+        assert_equal("", change_sequence_sql('things'))
+        assert_equal("", change_sequence_sql('things', {}))
+        assert_equal("", change_sequence_sql('things', nil))
       end
     end
     
     context "with options" do
       
       should "include options at the end" do
-        assert_equal("ALTER SEQUENCE things INCREMENT BY 1 MINVALUE 1 MAXVALUE 2000000 RESTART WITH 1 CACHE 5 CYCLE", alter_sequence_sql('things', @options.merge(:restart => 1)))
+        assert_equal("ALTER SEQUENCE things INCREMENT BY 1 MINVALUE 1 MAXVALUE 2000000 RESTART WITH 1 CACHE 5 CYCLE", change_sequence_sql('things', @options.merge(:restart => 1)))
       end
     end
     
