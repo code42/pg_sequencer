@@ -18,4 +18,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 3.1.0"
   s.add_development_dependency "pg", "0.11.0"
+  s.add_development_dependency "guard"
+  s.add_development_dependency "guard-test"
+  s.add_development_dependency "shoulda-context"
 end
