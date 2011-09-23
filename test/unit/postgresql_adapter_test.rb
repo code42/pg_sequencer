@@ -9,7 +9,6 @@ class PostgreSQLAdapterTest < ActiveSupport::TestCase
       :increment => 1,
       :min       => 1,
       :max       => 2_000_000,
-      :start     => 1,
       :cache     => 5,
       :cycle     => true
     }
@@ -92,7 +91,7 @@ class PostgreSQLAdapterTest < ActiveSupport::TestCase
     end
 
     should "include all options" do
-      assert_equal " INCREMENT BY 1 MINVALUE 1 MAXVALUE 2000000 START WITH 1 CACHE 5 CYCLE", sequence_options_sql(@options)
+      assert_equal " INCREMENT BY 1 MINVALUE 1 MAXVALUE 2000000 START WITH 1 CACHE 5 CYCLE", sequence_options_sql(@options.merge(:start => 1))
     end
   end # generating sequence option SQL
   
@@ -106,7 +105,7 @@ class PostgreSQLAdapterTest < ActiveSupport::TestCase
     
     context "with options" do
       should "include options at the end" do
-        assert_equal("CREATE SEQUENCE things INCREMENT BY 1 MINVALUE 1 MAXVALUE 2000000 START WITH 1 CACHE 5 CYCLE", create_sequence_sql('things', @options))
+        assert_equal("CREATE SEQUENCE things INCREMENT BY 1 MINVALUE 1 MAXVALUE 2000000 START WITH 1 CACHE 5 CYCLE", create_sequence_sql('things', @options.merge(:start => 1)))
       end
     end
   end # creating sequences
@@ -121,8 +120,9 @@ class PostgreSQLAdapterTest < ActiveSupport::TestCase
     end
     
     context "with options" do
+      
       should "include options at the end" do
-        assert_equal("ALTER SEQUENCE things INCREMENT BY 1 MINVALUE 1 MAXVALUE 2000000 START WITH 1 CACHE 5 CYCLE", alter_sequence_sql('things', @options))
+        assert_equal("ALTER SEQUENCE things INCREMENT BY 1 MINVALUE 1 MAXVALUE 2000000 RESTART WITH 1 CACHE 5 CYCLE", alter_sequence_sql('things', @options.merge(:restart => 1)))
       end
     end
     
