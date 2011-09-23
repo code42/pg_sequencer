@@ -9,4 +9,9 @@ class PostgreSQLAdapterTest < ActiveSupport::TestCase
     assert_equal("CREATE SEQUENCE blahs", create_sequence_sql('blahs'))
   end
   
+  test "removing a sequence by name" do
+    assert_equal("DROP SEQUENCE seq_users", remove_sequence_sql('seq_users'))
+    assert_equal("DROP SEQUENCE seq_items", remove_sequence_sql('seq_items'))
+  end
+  
 end

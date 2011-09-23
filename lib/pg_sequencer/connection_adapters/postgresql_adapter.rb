@@ -3,9 +3,8 @@ module PgSequencer
     module PostgreSQLAdapter
       
       def add_sequence(name, options = {})
-        # actually execute the SQL to add a sequence
+        execute create_sequence_sql(name, options)
       end
-      
       
       # CREATE [ TEMPORARY | TEMP ] SEQUENCE name [ INCREMENT [ BY ] increment ]
       #     [ MINVALUE minvalue | NO MINVALUE ] [ MAXVALUE maxvalue | NO MAXVALUE ]
@@ -13,6 +12,10 @@ module PgSequencer
       def create_sequence_sql(name, options = {})
         sql = "CREATE SEQUENCE #{name}"
         sql
+      end
+      
+      def remove_sequence_sql(name)
+        "DROP SEQUENCE #{name}"
       end
       
     end
