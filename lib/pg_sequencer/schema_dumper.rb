@@ -3,12 +3,10 @@ module PgSequencer
     extend ActiveSupport::Concern
     
     included do
-      puts "schema_dumper included"
       alias_method_chain :tables, :sequences
     end
     
     def tables_with_sequences(stream)
-      puts "tables_with_sequences"
       tables_without_sequences(stream)
       sequences(stream)
     end
@@ -16,7 +14,7 @@ module PgSequencer
     private
     def sequences(stream)
       sequence_statements = @connection.sequences.map do |sequence|
-        statement_parts = [ ('add_sequence ') + sequence.name.inspect ]
+        statement_parts = [ ('create_sequence ') + sequence.name.inspect ]
         statement_parts << (':increment => ' + sequence.options[:increment].inspect)
         statement_parts << (':min => ' + sequence.options[:min].inspect)
         statement_parts << (':max => ' + sequence.options[:max].inspect)

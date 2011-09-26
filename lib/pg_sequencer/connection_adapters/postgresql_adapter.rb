@@ -1,4 +1,3 @@
-puts "loaded postgresql_adapter"
 module PgSequencer
   module ConnectionAdapters
     
@@ -6,7 +5,7 @@ module PgSequencer
     end
     
     module PostgreSQLAdapter
-      def add_sequence(name, options = {})
+      def create_sequence(name, options = {})
         execute create_sequence_sql(name, options)
       end
       

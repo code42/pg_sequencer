@@ -75,8 +75,8 @@ class SchemaDumperTest < ActiveSupport::TestCase
       expected_output = <<-SCHEMAEND
 # Fake Schema Header
 # (No Tables)
-  add_sequence "seq_t_item", :increment => 1, :min => 1, :max => 2000000, :start => 1, :cache => 5, :cycle => true
-  add_sequence "seq_t_user", :increment => 1, :min => 1, :max => 2000000, :start => 1, :cache => 5, :cycle => true
+  create_sequence "seq_t_item", :increment => 1, :min => 1, :max => 2000000, :start => 1, :cache => 5, :cycle => true
+  create_sequence "seq_t_user", :increment => 1, :min => 1, :max => 2000000, :start => 1, :cache => 5, :cycle => true
 
 # Fake Schema Trailer
 SCHEMAEND
@@ -97,8 +97,8 @@ SCHEMAEND
         expected_output = <<-SCHEMAEND
 # Fake Schema Header
 # (No Tables)
-  add_sequence "seq_t_item", :increment => 1, :min => false, :max => 2000000, :start => 1, :cache => 5, :cycle => true
-  add_sequence "seq_t_user", :increment => 1, :min => false, :max => 2000000, :start => 1, :cache => 5, :cycle => true
+  create_sequence "seq_t_item", :increment => 1, :min => false, :max => 2000000, :start => 1, :cache => 5, :cycle => true
+  create_sequence "seq_t_user", :increment => 1, :min => false, :max => 2000000, :start => 1, :cache => 5, :cycle => true
 
 # Fake Schema Trailer
 SCHEMAEND
