@@ -6,6 +6,7 @@ module PgSequencer
       puts "pg_sequencer.load_adapter"
       
       ActiveSupport.on_load :active_record do
+        require 'pg_sequencer/connection_adapters/postgresql_adapter'
         puts "loaded activerecord"
         
         ActiveRecord::ConnectionAdapters.module_eval do
@@ -16,7 +17,6 @@ module PgSequencer
           include PgSequencer::SchemaDumper
         end
         
-        require 'pg_sequencer/connection_adapters/postgresql_adapter'
       end
 
   #     if defined?(ActiveRecord::Migration::CommandRecorder)
