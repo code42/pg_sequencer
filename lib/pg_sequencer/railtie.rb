@@ -31,3 +31,5 @@ module PgSequencer
     end # initializer
   end
 end
+
+require 'active_record'
