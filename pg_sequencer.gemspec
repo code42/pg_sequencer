@@ -7,8 +7,8 @@ require "pg_sequencer/version"
 Gem::Specification.new do |s|
   s.name        = "pg_sequencer"
   s.version     = PgSequencer::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
+  s.authors     = ["Tony Collen"]
+  s.email       = ["tonyc@code42.com"]
   s.homepage    = "TODO"
   s.summary     = "TODO: Summary of PgSequencer."
   s.description = "TODO: Description of PgSequencer."

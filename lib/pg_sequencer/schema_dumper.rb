@@ -16,13 +16,6 @@ module PgSequencer
     private
     def sequences(stream)
       sequence_statements = @connection.sequences.map do |sequence|
-        # create_sequence "seq_user",
-        #   :increment => 1,
-        #   :min       => (1|false),
-        #   :max       => (20000|false),
-        #   :start     => 1,
-        #   :cache     => 5,
-        #   :cycle     => true
         statement_parts = [ ('add_sequence ') + sequence.name.inspect ]
         statement_parts << (':increment => ' + sequence.options[:increment].inspect)
         statement_parts << (':min => ' + sequence.options[:min].inspect)
