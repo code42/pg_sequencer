@@ -86,6 +86,8 @@ module PgSequencer
           
           all_sequences << SequenceDefinition.new(sequence_name, options)
         end
+        
+        all_sequences
       end
       
       protected
