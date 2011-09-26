@@ -8,10 +8,10 @@ module PgSequencer
         ActiveRecord::ConnectionAdapters.module_eval do
           include PgSequencer::ConnectionAdapters::PostgreSQLAdapter
         end
-      end
       
-      ActiveRecord::SchemaDumper.class_eval do
-        include PgSequencer::SchemaDumper
+        ActiveRecord::SchemaDumper.class_eval do
+          include PgSequencer::SchemaDumper
+        end
       end
 
   #     if defined?(ActiveRecord::Migration::CommandRecorder)
