@@ -8,6 +8,7 @@ module PgSequencer
     end
     
     def tables_with_sequences(stream)
+      puts "tables_with_sequences"
       tables_without_sequences(stream)
       sequences(stream)
     end
