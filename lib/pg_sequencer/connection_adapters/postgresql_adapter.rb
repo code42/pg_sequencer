@@ -1,7 +1,10 @@
 module PgSequencer
   module ConnectionAdapters
+    
+    class SequenceDefinition < Struct.new(:name, :options)
+    end
+    
     module PostgreSQLAdapter
-      
       def add_sequence(name, options = {})
         execute create_sequence_sql(name, options)
       end
@@ -50,6 +53,39 @@ module PgSequencer
         sql << cache_option_sql(options)      if options[:cache]
         sql << cycle_option_sql(options)
         sql
+      end
+      
+      def sequences
+        # sequence_temp=# select * from temp;
+        # -[ RECORD 1 ]-+--------------------
+        # sequence_name | temp
+        # last_value    | 7
+        # start_value   | 1
+        # increment_by  | 1
+        # max_value     | 9223372036854775807
+        # min_value     | 1
+        # cache_value   | 1
+        # log_cnt       | 26
+        # is_cycled     | f
+        # is_called     | t
+        sequence_names = select_all("SELECT c.relname FROM pg_class c WHERE c.relkind = 'S' order by c.relname asc").map { |row| row['relname'] }
+        
+        all_sequences = []
+        
+        sequence_names.each do |sequence_name|
+          row = select_one("SELECT * FROM #{sequence_name}")
+          
+          options = {
+            :increment => row['increment_by'].to_i,
+            :min       => row['min_value'].to_i,
+            :max       => row['max_value'].to_i,
+            :start     => row['start_value'].to_i,
+            :cache     => row['cache_value'].to_i,
+            :cycle     => row['is_cycled'] == 't'
+          }
+          
+          all_sequences << SequenceDefinition.new(sequence_name, options)
+        end
       end
       
       protected
