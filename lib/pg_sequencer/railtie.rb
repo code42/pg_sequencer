@@ -4,7 +4,11 @@ require 'pg_sequencer/connection_adapters/postgresql_adapter'
 module PgSequencer
   class Railtie < Rails::Railtie
     initializer "pg_sequencer.load_adapter" do
+      puts "pg_sequencer.load_adapter"
+      
       ActiveSupport.on_load :active_record do
+        puts "loaded activerecord"
+        
         ActiveRecord::ConnectionAdapters.module_eval do
           include PgSequencer::ConnectionAdapters::PostgreSQLAdapter
         end
