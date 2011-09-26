@@ -1,5 +1,4 @@
 puts 'pg_sequencer railtie'
-require 'pg_sequencer/connection_adapters/postgresql_adapter'
 
 module PgSequencer
   class Railtie < Rails::Railtie
