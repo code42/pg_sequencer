@@ -3,6 +3,7 @@ module PgSequencer
     extend ActiveSupport::Concern
     
     included do
+      puts "schema_dumper included"
       alias_method_chain :tables, :sequences
     end
     
