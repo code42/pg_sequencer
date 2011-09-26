@@ -1,3 +1,4 @@
+puts "loaded postgresql_adapter"
 module PgSequencer
   module ConnectionAdapters
     
