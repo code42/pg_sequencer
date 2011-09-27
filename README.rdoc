@@ -20,20 +20,22 @@ pg_sequencer adds the following methods to migrations:
 
 The methods closely mimic the syntax of the PostgreSQL SQL for CREATE SEQUENCE, DROP SEQUENCE and ALTER SEQUENCE. See the REFERENCES section below for more information.
 
-=== Options
+== Options
 
 For create_sequence and change_sequence, all options are the same, except create_sequence will look for :start or :start_with, and 
-change_sequence will look for :restart or :restart_with.  
+change_sequence will look for :restart or :restart_with.
 
-* :increment/:increment_by (numeric) - the value to increment the sequence by.
-* :min - (numeric) - The minimum value of the sequence. If specified as false (e.g. :min => false), "NO MINVALUE" is sent to Postgres.
-* :max - (numeric) - The maximum value of the sequence. May be specified as ":max => false" to generate "NO MAXVALUE"
-* :start/:start_with - (numeric) - The starting value of the sequence (create_sequence only)
-* :restart/:restart_with - (number) The value to restart the sequence with (change_sequence only)
-* :cache - (numeric) - The number of values the sequence should cache.
+* :increment/:increment_by (integer) - the value to increment the sequence by.
+* :min - (integer/false) - The minimum value of the sequence. If specified as false (e.g. :min => false), "NO MINVALUE" is sent to Postgres.
+* :max - (integer/false) - The maximum value of the sequence. May be specified as ":max => false" to generate "NO MAXVALUE"
+* :start/:start_with - (integer) - The starting value of the sequence (create_sequence only)
+* :restart/:restart_with - (integer) The value to restart the sequence with (change_sequence only)
+* :cache - (integer) - The number of values the sequence should cache.
 * :cycle - (true/false) - Whether the sequence should cycle. Generated at "CYCLE" or "NO CYCLE"
 
-=== Examples
+== Examples
+
+=== Creating a sequence
 
 Create a sequence called "seq_user", incrementing by 1, min of 1, max of 2000000, starts at 1, caches 10 values, and disallows cycles:
 
@@ -50,13 +52,17 @@ This is equivalent of the following query:
 
   CREATE SEQUENCE seq_user INCREMENT BY 1 MIN 1 MAX 2000000 START 1 CACHE 10 NO CYCLE
 
-Reset a sequence's value:
+=== Reset a sequence's value:
 
   change_sequence "seq_accounts", :restart_with => 50
 
 This is equivalent to:
   
   ALTER SEQUENCE seq_accounts RESTART WITH 50
+  
+=== Removing a sequence:
+
+  drop_sequence "seq_products"
 
 == Caveats / Bugs
 * Listing all the sequences in a database creates n+1 queries (1 to get the names and n to describe each sequence). Is there a way to fully describe all sequences in a database in one query?
