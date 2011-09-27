@@ -65,6 +65,7 @@ This is equivalent to:
   drop_sequence "seq_products"
 
 == Caveats / Bugs
+* Tested with postgres 9.0.4, should work down to 8.1.
 * Listing all the sequences in a database creates n+1 queries (1 to get the names and n to describe each sequence). Is there a way to fully describe all sequences in a database in one query?
 * The "SET SCHEMA" fragment of the ALTER command is not implemented.
 * Oracle/other databases not supported
