@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = PgSequencer::VERSION
   s.authors     = ["Tony Collen"]
   s.email       = ["tonyc@code42.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of PgSequencer."
-  s.description = "TODO: Description of PgSequencer."
+  s.homepage    = "http://code42.com/"
+  s.summary     = "Manage postgres sequences in Rails migrations"
+  s.description = "Sequences need some love. pg_sequencer teaches Rails what sequences are, and will dump them to schema.rb, and also lets you create/drop sequences in migrations."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["test/**/*"]
