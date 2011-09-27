@@ -25,13 +25,13 @@ The methods closely mimic the syntax of the PostgreSQL SQL for CREATE SEQUENCE, 
 For create_sequence and change_sequence, all options are the same, except create_sequence will look for :start or :start_with, and 
 change_sequence will look for :restart or :restart_with.
 
-* :increment/:increment_by (integer) - the value to increment the sequence by.
-* :min - (integer/false) - The minimum value of the sequence. If specified as false (e.g. :min => false), "NO MINVALUE" is sent to Postgres.
-* :max - (integer/false) - The maximum value of the sequence. May be specified as ":max => false" to generate "NO MAXVALUE"
-* :start/:start_with - (integer) - The starting value of the sequence (create_sequence only)
-* :restart/:restart_with - (integer) The value to restart the sequence with (change_sequence only)
-* :cache - (integer) - The number of values the sequence should cache.
-* :cycle - (true/false) - Whether the sequence should cycle. Generated at "CYCLE" or "NO CYCLE"
+* :increment/:increment_by (integer) - The value to increment the sequence by.
+* :min (integer/false) - The minimum value of the sequence. If specified as false (e.g. :min => false), "NO MINVALUE" is sent to Postgres.
+* :max (integer/false) - The maximum value of the sequence. May be specified as ":max => false" to generate "NO MAXVALUE"
+* :start/:start_with (integer) - The starting value of the sequence (create_sequence only)
+* :restart/:restart_with (integer) The value to restart the sequence with (change_sequence only)
+* :cache (integer) - The number of values the sequence should cache.
+* :cycle (boolean) - Whether the sequence should cycle. Generated at "CYCLE" or "NO CYCLE"
 
 == Examples
 
