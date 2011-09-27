@@ -27,4 +27,4 @@ module PgSequencer
   end
 end
 
-require 'active_record'
+# require 'active_record'
