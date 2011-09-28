@@ -72,9 +72,9 @@ This is equivalent to:
 * Other unknown bugs :)
   
 == References
-
 * http://www.postgresql.org/docs/8.1/static/sql-createsequence.html
 * http://www.postgresql.org/docs/8.1/static/sql-altersequence.html
+* http://www.alberton.info/postgresql_meta_info.html
 
 == License
 
