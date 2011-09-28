@@ -4,6 +4,9 @@ pg_sequencer adds methods to your migrations to allow you to create, drop and ch
 
 This is especially useful if you are connecting to a legacy database where the primary key field is declared as an INTEGER and a sequence is queried for the value of the next record.
 
+The design of pg_sequencer is heavily influenced on Matthew Higgins' Foreigner gem:
+* https://github.com/matthuhiggins/foreigner
+
 == Installation
 
 Add this to your Gemfile:
