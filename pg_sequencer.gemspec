@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.summary     = "Manage postgres sequences in Rails migrations"
   s.description = "Sequences need some love. pg_sequencer teaches Rails what sequences are, and will dump them to schema.rb, and also lets you create/drop sequences in migrations."
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib}/**/*"] + ["Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
   # s.add_dependency "rails", "~> 3.1.0"
