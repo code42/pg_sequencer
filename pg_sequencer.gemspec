@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = PgSequencer::VERSION
   s.authors     = ["Tony Collen"]
   s.email       = ["tonyc@code42.com"]
-  s.homepage    = "http://code42.com/"
+  s.homepage    = "https://github.com/code42/pg_sequencer/"
   s.summary     = "Manage postgres sequences in Rails migrations"
   s.description = "Sequences need some love. pg_sequencer teaches Rails what sequences are, and will dump them to schema.rb, and also lets you create/drop sequences in migrations."
 
