@@ -12,7 +12,7 @@ The design of pg_sequencer is heavily influenced on Matthew Higgins' Foreigner g
 Add this to your Gemfile:
 
   gem 'pg_sequencer'
-  
+
 == API
 
 pg_sequencer adds the following methods to migrations:
@@ -25,7 +25,7 @@ The methods closely mimic the syntax of the PostgreSQL SQL for CREATE SEQUENCE, 
 
 == Options
 
-For create_sequence and change_sequence, all options are the same, except create_sequence will look for :start or :start_with, and 
+For create_sequence and change_sequence, all options are the same, except create_sequence will look for :start or :start_with, and
 change_sequence will look for :restart or :restart_with.
 
 * :increment/:increment_by (integer) - The value to increment the sequence by.
@@ -50,7 +50,7 @@ Create a sequence called "seq_user", incrementing by 1, min of 1, max of 2000000
     :cache => 10,
     :cycle => false
   })
-  
+
 This is equivalent of the following query:
 
   CREATE SEQUENCE seq_user INCREMENT BY 1 MIN 1 MAX 2000000 START 1 CACHE 10 NO CYCLE
@@ -60,9 +60,9 @@ This is equivalent of the following query:
   change_sequence "seq_accounts", :restart_with => 50
 
 This is equivalent to:
-  
+
   ALTER SEQUENCE seq_accounts RESTART WITH 50
-  
+
 === Removing a sequence:
 
   drop_sequence "seq_products"
@@ -73,24 +73,8 @@ This is equivalent to:
 * The "SET SCHEMA" fragment of the ALTER command is not implemented.
 * Oracle/other databases not supported
 * Other unknown bugs :)
-  
+
 == References
 * http://www.postgresql.org/docs/8.1/static/sql-createsequence.html
 * http://www.postgresql.org/docs/8.1/static/sql-altersequence.html
 * http://www.alberton.info/postgresql_meta_info.html
-
-== License
-
-Copyright (c) 2011 Code 42 Software.
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
