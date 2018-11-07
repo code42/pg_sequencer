@@ -1,3 +1,6 @@
+= NOTICE: Project is no longer maintained
+As of November 7th, 2018, Code42 has chosen to no longer actively host this project.  The project was archive at this point.  All issues have been closed and pull requests rejected.  While archived, the source is still available, but this project may be permanantly removed from GitHub in the near future.
+
 = pg_sequencer
 
 pg_sequencer adds methods to your migrations to allow you to create, drop and change sequence objects in PostgreSQL. It also dumps sequences to schema.rb.
